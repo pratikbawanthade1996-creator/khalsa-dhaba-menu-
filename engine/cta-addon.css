@@ -1,0 +1,8 @@
+
+/* cta-addon.css — Floating CTAs (WA + Location + Share) */
+.cta-stack{position:fixed;right:16px;bottom:16px;z-index:100;display:flex;flex-direction:column;gap:10px}
+.cta{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:800;letter-spacing:.2px;color:#00110E;padding:12px 16px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+#btnWa{background:linear-gradient(135deg,#00FFD1,#7affe7)}
+#btnViewLoc{background:linear-gradient(135deg,#FFD54F,#FFA000)}
+#btnShareLoc{background:linear-gradient(135deg,#64B5F6,#1976D2);color:#e9f2ff}
+@media print{.cta-stack{display:none}}
