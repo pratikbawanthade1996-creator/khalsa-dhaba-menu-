@@ -712,3 +712,27 @@ async function initPlanSystem() {
 
 // ensure this runs after DOM ready
 document.addEventListener("DOMContentLoaded", initPlanSystem);
+
+// Plan switcher: wire up sidebar buttons to change plans at runtime
+function initPlanSwitcher() {
+  safeQueryAll('.plan-btn').forEach(btn => {
+    try {
+      btn.addEventListener('click', () => {
+        const plan = btn.getAttribute('data-plan');
+        if (!plan) return;
+        try { setActivePlan(plan); } catch (e) {}
+        try { enforceGalleryLimit(); } catch (e) {}
+        safeQueryAll('.plan-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    } catch (e) { /* ignore button attach errors */ }
+  });
+  const cur = localStorage.getItem('menu_active_plan') || 'basic';
+  try {
+    const el = document.querySelector(`.plan-btn[data-plan="${cur}"]`);
+    if (el) el.classList.add('active');
+  } catch (e) {}
+}
+if (typeof window !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', initPlanSwitcher);
+}
