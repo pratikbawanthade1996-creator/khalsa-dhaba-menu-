@@ -226,7 +226,15 @@ function render() {
   if (!mount) { console.warn('No mount element (#preview/#app/#mount) found'); return; }
 
   renderTemplate(state.template, state.menu)
-    .then(html => { mount.innerHTML = html; })
+    .then(html => { mount.innerHTML = html;
+      try {
+        const activePlan = localStorage.getItem('menu_active_plan') || Object.keys(PLAN_FEATURES)[0];
+        setActivePlan(activePlan);
+      } catch (e) { /* ignore plan apply errors */ }
+      try { enforceGalleryLimit(); } catch (e) {}
+      // expose setter for console/runtime
+      window.setActivePlan = setActivePlan;
+    })
     .catch(err => {
       console.error('Render error:', err);
       mount.innerHTML =
@@ -560,6 +568,25 @@ function setActivePlan(planName) {
   try { localStorage.setItem("menu_active_plan", planName); } catch (e) {}
   // make current config available for debugging or templates
   window.currentPlanConfig = cfg;
+}
+
+// Enforce gallery limits by hiding images beyond the plan's galleryLimit.
+function enforceGalleryLimit() {
+  try {
+    const planName = localStorage.getItem("menu_active_plan") || Object.keys(PLAN_FEATURES)[0];
+    const cfg = PLAN_FEATURES[planName] || PLAN_FEATURES.basic || {};
+    const limit = cfg.galleryLimit;
+    const showImages = cfg.showImages !== undefined ? cfg.showImages : true;
+    const images = safeQueryAll('.menu-item-image, .item-photo');
+    images.forEach((img, idx) => {
+      try {
+        if (!showImages) { if (img) img.style.display = 'none'; return; }
+        if (limit === null || limit === undefined) { if (img) img.style.display = ''; return; }
+        if (Number.isFinite(limit) && idx >= limit) { if (img) img.style.display = 'none'; }
+        else { if (img) img.style.display = ''; }
+      } catch (e) { /* ignore individual node errors */ }
+    });
+  } catch (e) { console.warn('enforceGalleryLimit error:', e); }
 }
 
 // 4) UI helpers
