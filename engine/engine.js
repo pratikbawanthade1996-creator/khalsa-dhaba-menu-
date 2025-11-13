@@ -16,6 +16,11 @@ export const state = {
   theme:    localStorage.getItem(STORAGE_THEME) || REGISTRY.defaults.theme,
   template: localStorage.getItem(STORAGE_TPL)   || REGISTRY.defaults.template,
 };
+// safe DOM helper used by agent edits
+function safeQueryAll(selector) {
+  try { return Array.from(document.querySelectorAll(selector) || []); }
+  catch (e) { return []; }
+}
 
 // ===== Sample fallback (for “Load sample”) =====
 const SAMPLE = {
@@ -487,16 +492,14 @@ document.addEventListener("DOMContentLoaded", function() {
 applyClientToUI(client);
 
 
-      // Hide all optional features first
-      document.querySelectorAll("[data-feature]").forEach(el => {
-        el.classList.add("hidden");
-      });
+      // Hide all optional features first (safe)
+      safeQueryAll("[data-feature]").forEach(el => { try { el.classList.add("hidden"); } catch (e) {} });
 
       // Show only the features defined in client.json
       if (data.features) {
         data.features.forEach(feature => {
           const el = document.querySelector(`[data-feature="${feature.toLowerCase()}"]`);
-          if (el) el.classList.remove("hidden");
+          if (el) try { el.classList.remove("hidden"); } catch (e) {}
         });
       }
     })
@@ -533,9 +536,11 @@ const PLAN_FEATURES = {
 
 // 4) UI helpers
 function setFeatureVisibility(featuresSet) {
-  document.querySelectorAll("[data-feature]").forEach(el => {
-    const key = el.getAttribute("data-feature");
-    el.classList.toggle("hidden", !featuresSet.has(key));
+  safeQueryAll("[data-feature]").forEach(el => {
+    try {
+      const key = el.getAttribute("data-feature");
+      el.classList.toggle("hidden", !featuresSet.has(key));
+    } catch (e) { /* ignore bad nodes */ }
   });
 }
 
@@ -572,8 +577,8 @@ function applyClientBindings(cfg) {
 
 // -------------------- Feature Visibility Helper --------------------
 function setFeatureVisible(key, on) {
-  const blocks = document.querySelectorAll(`[data-feature="${key}"]`);
-  blocks.forEach(b => b.style.display = on ? '' : 'none');
+  const blocks = safeQueryAll(`[data-feature="${key}"]`);
+  blocks.forEach(b => { try { b.style.display = on ? '' : 'none'; } catch (e) {} });
 }
 
 // -------------------- Business + Links Apply Helper --------------------
@@ -587,16 +592,12 @@ function applyClientToUI(cfg) {
   console.log('PLAN:', cfg.plan, 'FEATURES:', Array.from(fset));
 
   // 1) Hide EVERYTHING first
-  document.querySelectorAll('[data-feature]').forEach(el => {
-    el.style.display = 'none';
-  });
+  safeQueryAll('[data-feature]').forEach(el => { try { el.style.display = 'none'; } catch (e) {} });
 
   // 2) Show only allowed
-  for (const key of fset) {
-    document.querySelectorAll(`[data-feature="${key}"]`).forEach(el => {
-      el.style.display = '';
-    });
-  }
+    for (const key of fset) {
+      safeQueryAll(`[data-feature="${key}"]`).forEach(el => { try { el.style.display = ''; } catch (e) {} });
+    }
 
   // 3) (rest of your code stays same) — links, buttons, theme select…
   const waNum = normalizePhone(cfg.whatsapp);
@@ -633,9 +634,8 @@ async function initPlanSystem() {
     const plan = getPlan(); // 'basic' | 'standard' | 'premium'
     const cfg  = await loadClientConfig(plan);
     function setFeatureVisible(key, on) {
-  const blocks = document.querySelectorAll(`[data-feature="${key}"]`);
-  blocks.forEach(b => b.style.display = on ? '' : 'none');
-}
+      safeQueryAll(`[data-feature="${key}"]`).forEach(b => { try { b.style.display = on ? '' : 'none'; } catch (e) {} });
+    }
 
 
     // choose features from cfg.features OR fallback map
