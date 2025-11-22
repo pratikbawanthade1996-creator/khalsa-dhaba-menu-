@@ -5,6 +5,6 @@
   "whatsapp": "919999999999",
   "mapLink": "https://maps.google.com/?q=...",
   "reviewsLink": "https://g.page/r/....",
-  "features": ["qr","whatsapp","call","map","reviews"],
+  "features": ["qr","whatsapp","call","map","reviews","raptor-mini"],
   "price": 1999
 }

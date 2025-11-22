@@ -5,6 +5,6 @@
   "whatsapp": "",
   "mapLink": "",
   "reviewsLink": "",
-  "features": ["qr"],
+  "features": ["qr", "raptor-mini"],
   "price": 1199
 }

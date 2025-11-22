@@ -138,6 +138,31 @@ document.addEventListener('click', function (e) {
   e.preventDefault();
 
   const action = btn.dataset.action;
+  // ------- Plan switch handling (delegated) -------
+  if (!action) {
+    const plan = btn?.dataset?.plan || btn?.getAttribute('data-plan') || null;
+    const planAction = (btn && btn.dataset && btn.dataset.action === 'plan-switch') || false;
+    if (plan || planAction) {
+      e.preventDefault && e.preventDefault();
+      const chosenPlan = plan || btn.textContent.trim().toLowerCase();
+
+      window.CONFIG = window.CONFIG || {};
+      window.CONFIG.plan = chosenPlan;
+
+      try {
+        if (window.MenuEngine && window.MenuEngine.utils && typeof window.MenuEngine.utils.applyPlanFeatures === 'function') {
+          console.log('PLAN SWITCHED ->', chosenPlan);
+          window.MenuEngine.utils.applyPlanFeatures(chosenPlan);
+        } else {
+          console.warn('applyPlanFeatures not ready; plan saved:', chosenPlan);
+        }
+      } catch (err) {
+        console.error('Plan switch failed:', err);
+      }
+      return;
+    }
+  }
+  // ------- end plan switch handling -------
   const phone = btn.dataset.phone || btn.getAttribute('data-phone');
   switch (action) {
     case 'save-draft':
