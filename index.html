@@ -1,26 +1,370 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Khalsa Dhaba Menu</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #000;
-    }
-    img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khalsa Dhaba & Family Restaurant</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+
+body{
+  background:#111;
+  color:#fff;
+}
+
+.section{
+  padding:20px;
+}
+
+.section h2{
+  margin:15px 0;
+  font-size:22px;
+  border-bottom:2px solid #f5c542;
+  display:inline-block;
+}
+
+.hero{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.cover-img{
+  width:100%;
+  height:auto;
+  display:block;
+  margin-top: env(safe-area-inset-top);
+}
+
+.item{
+  display:flex;
+  justify-content:space-between;
+  padding:6px 0;
+  border-bottom:1px dashed #333;
+  font-size:15px;
+}
+
+.price{
+  color:#f5c542;
+  font-weight:bold;
+}
+
+/* ===== TABLE ALIGN FIX ===== */
+
+.table-head,
+.table-row {
+  display: grid;
+  grid-template-columns: 1fr 80px 80px;
+  gap: 10px;
+  padding: 8px 0;
+}
+
+.table-head {
+  font-weight: bold;
+  color: #ffc542;
+  border-bottom: 1px solid #333;
+  margin-top: 10px;
+}
+
+.table-row {
+  border-bottom: 1px dashed #333;
+}
+
+.table-head span,
+.table-row span {
+  text-align: right;
+}
+
+.table-head span:first-child,
+.table-row span:first-child {
+  text-align: left;
+}
+
+
+.footer-note{
+  font-size:14px;
+  line-height:1.6;
+}
+
+.cover-img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+@media (max-width: 768px){
+  .section{
+    padding: 14px;
+  }
+
+  .section h2{
+    font-size: 20px;
+  }
+
+  .item{
+    font-size: 15px;
+  }
+}
+
+</style>
 </head>
+
 <body>
 
-  <img src="menu-1.jpg" alt="Khalsa Dhaba Menu Page 1">
-  <img src="menu-2.jpg" alt="Khalsa Dhaba Menu Page 2">
+<!-- COVER IMAGE -->
+<img src="images/cover.jpg" class="cover-img" alt="Khalsa Dhaba Cover">
+
+
+<!-- BEVERAGES -->
+<div class="section">
+<img src="images/beverages.jpg" class="hero">
+<h2>Beverages</h2>
+<div class="item"><span>Drinking Water</span><span class="price">₹25</span></div>
+<div class="item"><span>Tea</span><span class="price">₹25</span></div>
+<div class="item"><span>Coffee</span><span class="price">₹35</span></div>
+<div class="item"><span>Cold Drink (200ml)</span><span class="price">₹30</span></div>
+<div class="item"><span>Masala Chaas</span><span class="price">₹40</span></div>
+<div class="item"><span>Sweet Lassi</span><span class="price">₹60</span></div>
+</div>
+
+<!-- PAPAD & SALAD -->
+<div class="section">
+<img src="images/papad-salad.jpg" class="hero">
+<h2>Papad & Salad</h2>
+<div class="item"><span>Roasted Papad</span><span class="price">₹25</span></div>
+<div class="item"><span>Fry Papad</span><span class="price">₹30</span></div>
+<div class="item"><span>Butter Papad</span><span class="price">₹30</span></div>
+<div class="item"><span>Masala Papad</span><span class="price">₹40</span></div>
+<div class="item"><span>Green Salad</span><span class="price">₹100</span></div>
+<div class="item"><span>Kachumber Salad</span><span class="price">₹100</span></div>
+</div>
+
+<!-- SOUP -->
+<div class="section">
+<img src="images/soup.jpg" class="hero">
+<h2>Soup</h2>
+<div class="item"><span>Tomato Soup</span><span class="price">₹130</span></div>
+<div class="item"><span>Hot & Sour Soup</span><span class="price">₹120</span></div>
+<div class="item"><span>Veg Manchow Soup</span><span class="price">₹120</span></div>
+</div>
+
+<!-- RAITA -->
+<div class="section">
+<img src="images/raita.jpg" class="hero">
+<h2>Raita</h2>
+<div class="item"><span>Curd</span><span class="price">₹60</span></div>
+<div class="item"><span>Veg Raita</span><span class="price">₹120</span></div>
+<div class="item"><span>Boondi Raita</span><span class="price">₹120</span></div>
+</div>
+
+<!-- CHINESE (FULL LIST) -->
+<div class="section">
+<img src="images/chinese.jpg" class="hero">
+<h2>Chinese</h2>
+
+<div class="item"><span>French Fries</span><span class="price">₹130</span></div>
+<div class="item"><span>Peri Peri French Fries</span><span class="price">₹140</span></div>
+
+<div class="item"><span>Plain Maggi</span><span class="price">₹100</span></div>
+<div class="item"><span>Tadka Maggi</span><span class="price">₹120</span></div>
+<div class="item"><span>Veg Masala Maggi</span><span class="price">₹120</span></div>
+
+<div class="item"><span>Cheese Corn Balls</span><span class="price">₹230</span></div>
+<div class="item"><span>Chinese Bhel</span><span class="price">₹190</span></div>
+
+<div class="item"><span>Veg Manchurian</span><span class="price">₹200</span></div>
+<div class="item"><span>Paneer Chilli</span><span class="price">₹230</span></div>
+<div class="item"><span>Mushroom Chilli</span><span class="price">₹230</span></div>
+<div class="item"><span>Chana Chilli</span><span class="price">₹210</span></div>
+
+<div class="item"><span>Veg Crispy</span><span class="price">₹200</span></div>
+<div class="item"><span>Paneer Crispy</span><span class="price">₹230</span></div>
+<div class="item"><span>Corn Crispy</span><span class="price">₹230</span></div>
+
+<div class="item"><span>Veg 65</span><span class="price">₹210</span></div>
+<div class="item"><span>Paneer 65</span><span class="price">₹230</span></div>
+<div class="item"><span>Paneer Schezwan (Spicy)</span><span class="price">₹230</span></div>
+
+<div class="item"><span>Veg Noodles</span><span class="price">₹170</span></div>
+<div class="item"><span>Veg Hakka Noodles</span><span class="price">₹200</span></div>
+<div class="item"><span>Veg Schezwan Noodles</span><span class="price">₹200</span></div>
+<div class="item"><span>Manchurian Noodles</span><span class="price">₹200</span></div>
+<div class="item"><span>Paneer Noodles</span><span class="price">₹220</span></div>
+
+<div class="item"><span>Manchurian Rice</span><span class="price">₹220</span></div>
+<div class="item"><span>Veg Fried Rice</span><span class="price">₹190</span></div>
+<div class="item"><span>Paneer Fried Rice</span><span class="price">₹230</span></div>
+<div class="item"><span>Schezwan Rice</span><span class="price">₹210</span></div>
+<div class="item"><span>Mushroom Paneer Fried Rice</span><span class="price">₹240</span></div>
+</div>
+
+<!-- TANDOOR -->
+<div class="section">
+<img src="images/tandoor.jpg" class="hero">
+<h2>Tandoor</h2>
+<div class="item"><span>Paneer Tikka</span><span class="price">₹250</span></div>
+<div class="item"><span>Mushroom Tikka</span><span class="price">₹260</span></div>
+<div class="item"><span>Paneer Lasooni Tikka</span><span class="price">₹260</span></div>
+<div class="item"><span>Paneer Malai Tikka</span><span class="price">₹260</span></div>
+<div class="item"><span>Paneer Achari Tikka</span><span class="price">₹260</span></div>
+<div class="item"><span>Paneer Hariyali Tikka</span><span class="price">₹260</span></div>
+<div class="item"><span>Hara Bhara Kabab</span><span class="price">₹200</span></div>
+</div>
+
+<!-- KHALSA SPECIAL -->
+<div class="section">
+<img src="images/khalsa-special.jpg" class="hero">
+<h2>Khalsa Dhaba Special</h2>
+<div class="item"><span>Khalsa Dhaba Special</span><span class="price">₹280</span></div>
+<div class="item"><span>Makke Ki Roti</span><span class="price">₹70</span></div>
+<div class="item"><span>Sarso Ka Saag</span><span class="price">₹250</span></div>
+<div class="item"><span>Sev Bhaji</span><span class="price">₹230</span></div>
+<div class="item"><span>Dal Makhani</span><span class="price">₹230</span></div>
+<div class="item"><span>Baigan Bharta</span><span class="price">₹230</span></div>
+</div>
+
+<!-- MAIN COURSE - VEG -->
+<div class="section">
+  <img src="images/veg-main.jpg" class="hero">
+  <h2>Main Course – Veg</h2>
+
+  <div class="table-head"><span>Item</span><span>Full</span><span>Half</span></div>
+
+  <div class="table-row"><span>Chole Masala</span><span>₹230</span><span>₹135</span></div>
+  <div class="table-row"><span>Mix Veg</span><span>₹230</span><span>₹135</span></div>
+  <div class="table-row"><span>Veg Kolhapuri (Spicy)</span><span>₹220</span><span>₹135</span></div>
+  <div class="table-row"><span>Veg Saoji (Spicy)</span><span>₹220</span><span>-</span></div>
+  <div class="table-row"><span>Malai Kofta (Sweet)</span><span>₹250</span><span>-</span></div>
+  <div class="table-row"><span>Methi Mutter Malai (Sweet)</span><span>₹250</span><span>-</span></div>
+  <div class="table-row"><span>Methi Mutter Masala</span><span>₹240</span><span>-</span></div>
+  <div class="table-row"><span>Veg Kadhai</span><span>₹220</span><span>-</span></div>
+  <div class="table-row"><span>Aloo Jeera</span><span>₹180</span><span>-</span></div>
+  <div class="table-row"><span>Aloo Mutter</span><span>₹220</span><span>-</span></div>
+  <div class="table-row"><span>Bhindi Masala</span><span>₹220</span><span>-</span></div>
+  <div class="table-row"><span>Palak Lasuni</span><span>₹230</span><span>-</span></div>
+  <div class="table-row"><span>Mutter Masala</span><span>₹230</span><span>-</span></div>
+  <div class="table-row"><span>Tomato Chutney</span><span>₹220</span><span>-</span></div>
+  <div class="table-row"><span>Veg Anda Curry</span><span>₹250</span><span>-</span></div>
+  <div class="table-row"><span>Veg Handi</span><span>₹230</span><span>-</span></div>
+  <div class="table-row"><span>Veg Kofta</span><span>₹230</span><span>-</span></div>
+</div>
+
+<!-- MAIN COURSE - PANEER -->
+<div class="section">
+  <img src="images/paneer-main.jpg" class="hero">
+  <h2>Main Course – Paneer</h2>
+
+  <div class="table-head"><span>Item</span><span>Full</span><span>Half</span></div>
+
+  <div class="table-row"><span>Paneer Masala</span><span>₹240</span><span>₹160</span></div>
+  <div class="table-row"><span>Paneer Butter Masala (Sweet)</span><span>₹260</span><span>₹175</span></div>
+  <div class="table-row"><span>Paneer Butter Crush (Sweet)</span><span>₹280</span><span>₹180</span></div>
+  <div class="table-row"><span>Paneer Kolhapuri (Spicy)</span><span>₹240</span><span>₹160</span></div>
+  <div class="table-row"><span>Paneer Saoji (Spicy)</span><span>₹250</span><span>-</span></div>
+  <div class="table-row"><span>Palak Paneer</span><span>₹250</span><span>-</span></div>
+  <div class="table-row"><span>Mutter Paneer</span><span>₹230</span><span>-</span></div>
+  <div class="table-row"><span>Paneer Bhurji</span><span>₹280</span><span>-</span></div>
+  <div class="table-row"><span>Paneer Bhurji Curry</span><span>₹280</span><span>-</span></div>
+  <div class="table-row"><span>Cheese Butter Masala</span><span>₹260</span><span>-</span></div>
+  <div class="table-row"><span>Paneer Handi</span><span>₹240</span><span>-</span></div>
+  <div class="table-row"><span>Paneer Rimjhim</span><span>₹250</span><span>-</span></div>
+  <div class="table-row"><span>Paneer Takatak</span><span>₹240</span><span>-</span></div>
+  <div class="table-row"><span>Kadhai Paneer</span><span>₹250</span><span>-</span></div>
+  <div class="table-row"><span>Paneer Kofta</span><span>₹250</span><span>-</span></div>
+</div>
+
+<!-- MAIN COURSE - SPECIAL -->
+<div class="section">
+  <img src="images/special-main.jpg" class="hero">
+  <h2>Main Course – Special</h2>
+
+  <div class="item"><span>Kaju Masala</span><span class="price">₹280</span></div>
+  <div class="item"><span>Kaju Curry (Sweet)</span><span class="price">₹280</span></div>
+  <div class="item"><span>Shahi Paneer (Sweet)</span><span class="price">₹260</span></div>
+  <div class="item"><span>Veg Hyderabadi</span><span class="price">₹250</span></div>
+  <div class="item"><span>Veg Keema Kasturi</span><span class="price">₹250</span></div>
+  <div class="item"><span>Veg Patiyala</span><span class="price">₹230</span></div>
+
+  <div class="item"><span>Paneer Rara Masala</span><span class="price">₹250</span></div>
+  <div class="item"><span>Paneer Lababdar</span><span class="price">₹270</span></div>
+  <div class="item"><span>Paneer Lachedar</span><span class="price">₹270</span></div>
+  <div class="item"><span>Paneer Lazeez</span><span class="price">₹270</span></div>
+  <div class="item"><span>Paneer Tikka Masala</span><span class="price">₹260</span></div>
+  <div class="item"><span>Paneer Patiyala</span><span class="price">₹260</span></div>
+  <div class="item"><span>Paneer Toofani</span><span class="price">₹280</span></div>
+
+  <div class="item"><span>Mushroom Masala</span><span class="price">₹260</span></div>
+  <div class="item"><span>Mushroom Paneer Masala</span><span class="price">₹260</span></div>
+</div>
+
+<!-- DAL -->
+<div class="section">
+<img src="images/dal.jpg" class="hero">
+<h2>Dal</h2>
+<div class="table-head"><span>Item</span><span>Full</span><span>Half</span></div>
+<div class="table-row"><span>Dal Plain</span><span>₹170</span><span>₹115</span></div>
+<div class="table-row"><span>Dal Fry</span><span>₹190</span><span>₹125</span></div>
+<div class="table-row"><span>Dal Tadka</span><span>₹210</span><span>₹140</span></div>
+<div class="table-row"><span>Dal Kolhapuri</span><span>₹210</span><span>-</span></div>
+<div class="table-row"><span>Jeera Dal</span><span>₹190</span><span>-</span></div>
+<div class="table-row"><span>Snack Dal</span><span>₹220</span><span>-</span></div>
+<div class="table-row"><span>Dal Khichadi</span><span>₹220</span><span>-</span></div>
+</div>
+
+<!-- ROTI -->
+<div class="section">
+<img src="images/roti.jpg" class="hero">
+<h2>Roti</h2>
+<div class="item"><span>Tawa Roti</span><span class="price">₹20</span></div>
+<div class="item"><span>Butter Tawa Roti</span><span class="price">₹25</span></div>
+<div class="item"><span>Tawa Paratha</span><span class="price">₹40</span></div>
+<div class="item"><span>Tandoori Roti</span><span class="price">₹20</span></div>
+<div class="item"><span>Butter Tandoori Roti</span><span class="price">₹25</span></div>
+<div class="item"><span>Naan</span><span class="price">₹55</span></div>
+<div class="item"><span>Butter Naan</span><span class="price">₹60</span></div>
+<div class="item"><span>Garlic Naan</span><span class="price">₹70</span></div>
+<div class="item"><span>Cheese Garlic Naan</span><span class="price">₹80</span></div>
+<div class="item"><span>Lachha Paratha</span><span class="price">₹60</span></div>
+</div>
+
+<!-- RICE -->
+<div class="section">
+<img src="images/rice.jpg" class="hero">
+<h2>Rice & Pulao</h2>
+<div class="table-head"><span>Item</span><span>Full</span><span>Half</span></div>
+<div class="table-row"><span>Steam Rice</span><span>₹160</span><span>₹105</span></div>
+<div class="table-row"><span>Jeera Rice</span><span>₹170</span><span>₹110</span></div>
+<div class="table-row"><span>Garlic Rice</span><span>₹190</span><span>-</span></div>
+<div class="table-row"><span>Veg Biryani</span><span>₹280</span><span>-</span></div>
+<div class="table-row"><span>Paneer Pulao</span><span>₹270</span><span>-</span></div>
+<div class="table-row"><span>Veg Pulao</span><span>₹260</span><span>-</span></div>
+<div class="table-row"><span>Masala Rice</span><span>₹220</span><span>-</span></div>
+</div>
+
+<!-- SWEETS -->
+<div class="section">
+<img src="images/sweets.jpg" class="hero">
+<h2>Sweets</h2>
+<div class="item"><span>Gulab Jamun</span><span class="price">₹25</span></div>
+<div class="item"><span>Rasgulla</span><span class="price">₹25</span></div>
+<div class="item"><span>Gajar Ka Halwa</span><span class="price">₹60</span></div>
+</div>
+
+<!-- EXTRAS -->
+<div class="section">
+<img src="images/extras.jpg" class="hero">
+<h2>Extras / Notes</h2>
+<p class="footer-note">• Extra Butter / Gravy / Tadka – ₹50</p>
+<p class="footer-note">• 10% Discount on Parcel Orders</p>
+</div>
 
 </body>
 </html>
